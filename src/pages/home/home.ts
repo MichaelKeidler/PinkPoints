@@ -17,7 +17,7 @@ export class HomePage {
 
     FBLogin(){
       
-        console.log('crap');
+        console.log('zeug' + 'CR');
 
         this.fb.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
