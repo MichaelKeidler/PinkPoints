@@ -20,6 +20,8 @@ export class HomePage {
       
         console.log('Button FB Login');
 
+        console.log('Button FB Login, again ');
+
         this.fb.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
         .catch(e => console.log('Error logging into Facebook', e));
