@@ -5,17 +5,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>Welcome to PinkyPoints!</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    This app is made for my wife Johanna :-).
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    I need to register the domain pinkypoints.com
   </p>
   <p>
-    <button ion-button full ClickMe (click)='FBLogin();' >Login</button>
+    <button ion-button full ClickMe (click)='FBLogin();'>facebook Login</button>
   </p>  
-  <a class="facebook-sign-in button button-block" ng-click="facebookSignIn()">Login with Facebook</a>
+  <p>
+    <button ion-button full ClickMe (click)='GoogleLogin();'>google Login</button>
+  </p>  
+  <p>
+    <button ion-button full ClickMe (click)='twitterLogin();'>twitter Login</button>
+  </p>    
+  <p>
+    <button ion-button full ClickMe (click)='Logout();'>Logout</button>
+  </p>  
+
 </ion-content>

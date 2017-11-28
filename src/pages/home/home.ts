@@ -16,15 +16,27 @@ export class HomePage {
     
   }
 
-    FBLogin(){
-      
-        console.log('Button FB Login');
-
-        console.log('Button FB Login, again ');
+    FBLogin(){      
+        console.log('login-facebook');
 
         this.fb.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-        .catch(e => console.log('Error logging into Facebook', e));
- /*       */
+        .catch(e => console.log('Error logging into Facebook', e)); 
+    }  
+
+    GoogleLogin(){      
+        console.log('login-google');
+
+    }  
+    twitterLogin(){      
+        console.log('login-twitter');
+
+    }  
+
+    Logout(){      
+        console.log('Logout');
+
+        if (this.fb != null)
+            this.fb.logout();
     }  
 }
