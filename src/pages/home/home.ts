@@ -18,21 +18,28 @@ export class HomePage {
 
   private source = 1234;
 
+  private at = '';
+
   constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
     
   }
 
   presentToast() {
+
+    this.fb.getAccessToken()
+    .then((at: string) => this.at = at)
+    .catch(e => console.log('Error getting AccessToken', e)); 
+
+  
     let toast = this.toastCtrl.create({
-      message: 'User was added successfully',
-      duration: 3000
-    });
+      message: 'AccessToken: ' + this.at , duration: 1000 })
+
     toast.present();
   }
 
     FBLogin(){      
         console.log('login-facebook');
-
+                
         this.fb.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
         .catch(e => console.log('Error logging into Facebook', e)); 
@@ -50,8 +57,10 @@ export class HomePage {
     Logout(){      
         console.log('Logout');
 
-        if (this.fb != null)
-            this.fb.logout();
+        if (this.fb != null){
+          this.fb.logout();
+          this.at = '';
+        }          
     }  
 
     Camera(){

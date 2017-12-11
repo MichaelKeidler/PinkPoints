@@ -1,11 +1,46 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      PinkyPoints
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+    <ion-card>        
+          <ion-card-header>
+            Kontostand (Mike)
+          </ion-card-header>        
+          <ion-card-content>
+            1234
+          </ion-card-content>
+        
+        </ion-card>
+  <ion-item>
+    <ion-label>PinkyPoints:</ion-label>  
+    <ion-input type="number"  placeholder=15 ng-model="points"></ion-input>
+  </ion-item>
+  <p>points: <span ng-bind="points1"></span></p>
+  <ion-item>
+      <ion-label>Grund:</ion-label>  
+      <ion-input type="text" placeholder="Blumen" ng-model="reason"></ion-input>
+  </ion-item>
+  <p>reason: <span ng-bind="reason1"></span></p> 
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+            <button ion-button full ClickMe (click)='pointsPlus();'>
+               <ion-icon name="add"></ion-icon>
+               plus
+            </button>            
+        </ion-col>
+        <ion-col >
+          <button ion-button full  ClickMe (click)='pointsMinus();'>
+            <ion-icon name="remove"></ion-icon>
+             minus
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
 </ion-content>

@@ -11,4 +11,14 @@ export class AboutPage {
 
   }
 
+  pointsPlus(){      
+    console.log('pointsPlus');
+         
+  }  
+
+  pointsMinus(){      
+    console.log('pointsMinus');
+       
+  }  
+
 }

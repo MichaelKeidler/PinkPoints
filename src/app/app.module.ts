@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { CameraMock } from '../pages/home/home';
 
+
 @NgModule({
   declarations: [
     MyApp,
