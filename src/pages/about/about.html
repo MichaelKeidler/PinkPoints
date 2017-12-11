@@ -7,26 +7,26 @@
 </ion-header>
 
 <ion-content padding>
-
-    <ion-card>        
-          <ion-card-header>
-            Kontostand (Mike)
-          </ion-card-header>        
-          <ion-card-content>
-            1234
-          </ion-card-content>
-        
-        </ion-card>
-  <ion-item>
+    <ion-card>
+      <ion-card-header>
+        Kontostand (Mike)
+      </ion-card-header>
+      <ion-card-content>
+        {{points}}
+      </ion-card-content>
+    </ion-card>
+<!--   <ion-item>
     <ion-label>PinkyPoints:</ion-label>  
-    <ion-input type="number"  placeholder=15 ng-model="points"></ion-input>
-  </ion-item>
-  <p>points: <span ng-bind="points1"></span></p>
-  <ion-item>
+    <ion-input type="number"  placeholder=15 [(ngModel)]="points" name="points"></ion-input>
+  </ion-item> -->
+  
+<!--   <ion-item>
       <ion-label>Grund:</ion-label>  
-      <ion-input type="text" placeholder="Blumen" ng-model="reason"></ion-input>
-  </ion-item>
-  <p>reason: <span ng-bind="reason1"></span></p> 
+      <ion-input type="text" placeholder="Blumen" [(ngModel)]="AboutPage.reason"></ion-input>
+  </ion-item> -->
+<!--   <p>reason:
+    <span ng-bind="AboutPage.reason"></span>
+  </p> -->
   <ion-grid>
       <ion-row>
         <ion-col>

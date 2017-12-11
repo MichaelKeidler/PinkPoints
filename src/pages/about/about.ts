@@ -7,17 +7,24 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  private points: number = 0; 
 
+  constructor(public navCtrl: NavController) {
+   
+     this.points = 44; // get it somewhere from dartabase
   }
 
   pointsPlus(){      
-    console.log('pointsPlus');
-         
+    this.points++;
+
+    console.log('pointsPlus: +' + this.points);         
   }  
 
   pointsMinus(){      
-    console.log('pointsMinus');
+
+    this.points--;
+
+    console.log('pointsMinus: -' + this.points);
        
   }  
 
