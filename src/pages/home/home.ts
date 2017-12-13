@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { Camera } from '@ionic-native/camera';
+
 import { ToastController } from 'ionic-angular';
 
 
@@ -14,7 +13,7 @@ export class HomePage {
 
   private fb = new Facebook();
 
-  private cam = new CameraMock();
+  
 
   private source = 1234;
 
@@ -61,27 +60,6 @@ export class HomePage {
           this.fb.logout();
           this.at = '';
         }          
-    }  
-
-    Camera(){
-      console.log('Camera');
-  
-      this.cam.getPicture( this.source );
-
-    }
-    onFail(message) {
-      alert('Failed because: ' + message);
-    }
-
-    onPhotoURISuccess(imageURI) {
-    
-    }
+    } 
 }
 
-export class CameraMock extends Camera {
-    getPicture(options) {
-      return new Promise((resolve, reject) => {
-        resolve("BASE_64_ENCODED_DATA_GOES_HERE");
-      })
-    }
-  }

@@ -10,8 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera } from '@ionic-native/camera';
-import { CameraMock } from '../pages/home/home';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 
@@ -38,9 +37,9 @@ import { GooglePlus } from '@ionic-native/google-plus';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock },
-    GooglePlus
+    {provide: ErrorHandler, useClass: IonicErrorHandler},    
+    GooglePlus,
+    Facebook    
   ]
 })
 export class AppModule {}
