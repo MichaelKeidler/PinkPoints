@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { CameraMock } from '../pages/home/home';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CameraMock } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock }
+    {provide: Camera, useClass: CameraMock },
+    GooglePlus
   ]
 })
 export class AppModule {}

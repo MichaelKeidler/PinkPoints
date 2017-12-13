@@ -16,8 +16,11 @@
     <button ion-button full ClickMe (click)='FBLogin();'>facebook Login</button>
   </p>  
   <p>
-    <button ion-button full ClickMe (click)='GoogleLogin();'>google Login</button>
-  </p>  
+    <button ion-button full ClickMe (click)='GoogleLogin();' *ngIf="!userProfile">
+      <ion-icon name="logo-googleplus"></ion-icon>
+      google Login
+    </button>
+  </p>
   <p>
     <button ion-button full ClickMe (click)='twitterLogin();'>twitter Login</button>
   </p>    
@@ -26,6 +29,13 @@
   </p>  
   <p>
     <button ion-button full ClickMe (click)='presentToast();'>presentToast</button>
-  </p> 
-
-</ion-content>
+  </p>
+  <ion-item *ngIf="userProfile">
+    <ion-avatar item-left>
+      <img [src]="userProfile.photoURL">
+    </ion-avatar>
+    <h2>{{ userProfile.displayName }}</h2>
+    <h3>{{ userProfile.email }}</h3>
+  </ion-item>
+  
+  </ion-content>
