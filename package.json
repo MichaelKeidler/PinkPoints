@@ -36,6 +36,7 @@
     "cordova-plugin-googleplus": "^5.1.1",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-statusbar": "^2.3.0",
     "cordova-plugin-whitelist": "^1.3.1",
     "ionic-angular": "3.7.1",
     "ionic-plugin-keyboard": "^2.2.1",
@@ -66,7 +67,8 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.47400303710-nilpm678vsq235dsmd0boaq67vsk21pn"
-      }
+      },
+      "cordova-plugin-statusbar": {}
     },
     "platforms": [
       "android",
