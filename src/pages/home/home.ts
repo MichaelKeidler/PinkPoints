@@ -23,8 +23,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
     public toastCtrl: ToastController, 
     private googlePlus: GooglePlus, 
-    public platform: Platform, 
-    public app: MyApp) {    
+    public platform: Platform) {    
       
   }
 
