@@ -4,6 +4,7 @@ import { ToastController } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook'
 import { Platform } from 'ionic-angular';
+import { MyApp } from '../../app/app.component';
 
 
 @Component({
@@ -14,17 +15,17 @@ import { Platform } from 'ionic-angular';
 export class HomePage {
 
   private fb = new Facebook();
-
   private userProfile: any = null;
-
-  private source = 1234;
-
   private at = '';
-
   private googleClientID = '';
+   
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private googlePlus: GooglePlus, public platform: Platform) {
-    
+  constructor(public navCtrl: NavController, 
+    public toastCtrl: ToastController, 
+    private googlePlus: GooglePlus, 
+    public platform: Platform, 
+    public app: MyApp) {    
+      
   }
 
   presentToast() {
@@ -70,9 +71,10 @@ export class HomePage {
     }  
 
 
-    twitterLogin(){      
-        console.log('login-twitter');
+    firebaseLogin(){      
+        console.log('login-firebase');         
 
+        
     }  
 
     Logout(){      
