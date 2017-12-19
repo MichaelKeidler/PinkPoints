@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to PinkyPoints!</h2>
+  <h2>Welcome {{displayName}} to PinkyPoints!</h2>
   <p>
     This app is made for my wife Johanna :-).
   </p>
@@ -13,32 +13,21 @@
     I need to register the domain pinkypoints.com
   </p>
   <p>
-    <button ion-button full ClickMe (click)='FBLogin();'>facebook Login</button>
+    <button ion-button full ClickMe (click)='FBLogin();'>Login with facebook</button>
   </p>  
   <p>
     <button ion-button full ClickMe (click)='GoogleLogin();' *ngIf="!userProfile">
       <ion-icon name="logo-googleplus"></ion-icon>
-      google Login
+      Login with google
     </button>
   </p>
   <p>
-    <button ion-button full ClickMe (click)='FireBaseLogin();'>
-        <ion-icon name="logo-googleplus"></ion-icon>
-        Firebase Login
+    <button ion-button full ClickMe (click)='twitterLogin();'>        
+        Login with Twitter
       </button>
   </p>    
   <p>
     <button ion-button full ClickMe (click)='Logout();'>Logout</button>
   </p>  
-  <p>
-    <button ion-button full ClickMe (click)='presentToast();'>presentToast</button>
-  </p>
-  <ion-item *ngIf="userProfile">
-    <ion-avatar item-left>
-      <img [src]="userProfile.photoURL">
-    </ion-avatar>
-    <h2>{{ userProfile.displayName }}</h2>
-    <h3>{{ userProfile.email }}</h3>
-  </ion-item>
-  
+ 
   </ion-content>
