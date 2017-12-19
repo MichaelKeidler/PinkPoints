@@ -11,11 +11,13 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
 
-import { Facebook } from '@ionic-native/facebook';
+
 
 // import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 
