@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-import { GooglePlus } from '@ionic-native/google-plus';
+// import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook'
 import { Platform } from 'ionic-angular';
+
+import { AngularFireAuth } from 'angularfire2/auth'
+import * as firebase from 'firebase/app';
+
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -12,18 +17,19 @@ import { Platform } from 'ionic-angular';
 })
 
 export class HomePage {
+  
+  items: Observable<any[]>;
 
   private fb = new Facebook();
 
-  private userProfile: any = null;
-
-  private source = 1234;
+  //private userProfile: any = null;
 
   private at = '';
 
-  private googleClientID = '';
-
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private googlePlus: GooglePlus, public platform: Platform) {
+  constructor(public navCtrl: NavController, 
+              public toastCtrl: ToastController, 
+              public platform: Platform,
+              private fbAuth: AngularFireAuth) {
     
   }
 
@@ -51,7 +57,7 @@ export class HomePage {
         console.log('login-google');
 
       // WebClientID is different for iOS, Android and Web:        
-        
+        /* 
       if (this.platform.is('windows'))
         this.googleClientID = '47400303710-jjveir06futqet5kt2hl4pchnhbr4get.apps.googleusercontent.com';
 
@@ -66,17 +72,23 @@ export class HomePage {
           'offline': true
         })
         .then(res => console.log(res))
-        .catch(err => console.error(err));
+        .catch(err => console.error(err)); */
     }  
 
 
-    twitterLogin(){      
-        console.log('login-twitter');
+    FireBaseLogin(){      
+        console.log('login-FireBase');
+
+        this.fbAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then(res => console.log(res))
+        .catch(error => console.log(error))       
 
     }  
 
     Logout(){      
         console.log('Logout');
+
+        this.fbAuth.auth.signOut();
 
         if (this.fb != null){
           this.fb.logout();
