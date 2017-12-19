@@ -10,24 +10,34 @@
     This app is made for my wife Johanna :-).
   </p>
   <p>
+    <ion-thumbnail full>
+      <img src={{photoURL}} height="80">
+    </ion-thumbnail>
+  </p>
+  <p>
     I need to register the domain pinkypoints.com
   </p>
   <p>
     <button ion-button full ClickMe (click)='FBLogin();'>Login with facebook</button>
   </p>  
   <p>
-    <button ion-button full ClickMe (click)='GoogleLogin();' *ngIf="!userProfile">
-      <ion-icon name="logo-googleplus"></ion-icon>
+    <button ion-button full ClickMe (click)='GoogleLogin();'>
       Login with google
     </button>
   </p>
   <p>
     <button ion-button full ClickMe (click)='twitterLogin();'>        
-        Login with Twitter
+        Login with twitter
       </button>
-  </p>    
+  </p>
+  <p>
+    <button ion-button full ClickMe (click)='eMailLogin();'>
+      Login with eMail (register)
+    </button>
+  </p>
+  
   <p>
     <button ion-button full ClickMe (click)='Logout();'>Logout</button>
-  </p>  
+  </p>
  
   </ion-content>

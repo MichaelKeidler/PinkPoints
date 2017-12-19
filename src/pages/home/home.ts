@@ -19,8 +19,7 @@ export class HomePage {
   items: Observable<any[]>;
 
   private displayName;
-
-  private at = '';
+  private photoURL;
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
@@ -30,12 +29,14 @@ export class HomePage {
     fbAuth.authState.subscribe(user => {
       if (!user) {
         this.displayName = null;
+        this.photoURL = null;
         return;
       }
       this.displayName = user.displayName;
+      this.photoURL = user.photoURL;
       
       let toast = this.toastCtrl.create({
-        message: 'Hello: ' + user.displayName , duration: 1000 })
+        message: 'Hello: ' + user.displayName + '(' + user.providerId + ')', duration: 2000 })
   
       toast.present();
 
@@ -68,6 +69,14 @@ export class HomePage {
         .catch(error => console.log(error)) 
 
     }  
+
+    eMailLogin(){
+      console.log('login-email');
+
+      this.fbAuth.auth.signInWithPopup(new firebase.auth.EmailAuthProvider)
+      .then(res => console.log(res))
+      .catch(error => console.log(error)) 
+    }
 
     Logout(){      
         console.log('Logout');
