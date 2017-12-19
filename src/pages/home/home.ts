@@ -6,7 +6,10 @@ import { Platform } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase from 'firebase/app';
 
+import { Facebook } from '@ionic-native/facebook';
+
 import { Observable } from 'rxjs/Observable';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -24,7 +27,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
     public platform: Platform,
-    private fbAuth: AngularFireAuth) {
+    private fbAuth: AngularFireAuth,
+    private fb: Facebook) {
 
     fbAuth.authState.subscribe(user => {
       if (!user) {
@@ -47,9 +51,18 @@ export class HomePage {
     FBLogin(){      
         console.log('login-facebook');
                 
-        this.fbAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-        .then(res => console.log(res))
-        .catch(error => console.log(error))   
+        if (this.platform.is('cordova')) {
+          return this.fb.login(['email', 'public_profile']).then(res => {
+            const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+            return firebase.auth().signInWithCredential(facebookCredential);
+          })
+        }
+        else {
+          return this.fbAuth.auth
+            .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+            .then(res => console.log(res))
+            .catch(error => console.log(error));
+        }           
     }  
 
     GoogleLogin(): void {      
@@ -73,9 +86,7 @@ export class HomePage {
     eMailLogin(){
       console.log('login-email');
 
-      this.fbAuth.auth.signInWithPopup(new firebase.auth.EmailAuthProvider)
-      .then(res => console.log(res))
-      .catch(error => console.log(error)) 
+      this.navCtrl.push(LoginPage);
     }
 
     Logout(){      

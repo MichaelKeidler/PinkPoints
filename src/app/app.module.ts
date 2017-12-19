@@ -7,15 +7,16 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
+
+import { Facebook } from '@ionic-native/facebook';
+
 // import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 
 export const firebaseConfig = {
@@ -33,6 +34,7 @@ export const firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
+    LoginPage,
     TabsPage
   ],
   imports: [
@@ -48,14 +50,14 @@ export const firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},    
-    GooglePlus,
-    Facebook    
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    Facebook     
   ]
 })
 export class AppModule {}

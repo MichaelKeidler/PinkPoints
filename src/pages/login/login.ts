@@ -27,4 +27,30 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  async login(user: User) {
+    try {
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      if (result) {
+        this.navCtrl.setRoot('HomePage');
+      }  
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+ 
+  async register(user: User) {
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(
+        user.email,
+        user.password
+      );
+      if (result) {
+        this.navCtrl.setRoot('HomePage');
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
 }
