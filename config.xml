@@ -93,4 +93,7 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.47400303710-nilpm678vsq235dsmd0boaq67vsk21pn" />
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
+    <plugin name="cordova-android-support-gradle-release" spec="^1.1.5">
+        <variable name="ANDROID_SUPPORT_VERSION" value="26.+" />
+    </plugin>
 </widget>
