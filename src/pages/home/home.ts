@@ -24,17 +24,16 @@ export class HomePage {
 
   private displayName;
   private photoURL;
+  private googleClientID;
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
     public platform: Platform,
     private fbAuth: AngularFireAuth,
-    private fb: Facebook, 
+    private fb: Facebook,     
     private googlePlus: GooglePlus) {
+       
 
-    //firebase.initializeApp(environment.firebase);   
-      
-    
     fbAuth.authState.subscribe(user => {
       if (!user) {
         this.displayName = null;
@@ -50,6 +49,7 @@ export class HomePage {
       toast.present();
     }); 
 
+    
   }
 
     FBLogin(){      
@@ -71,12 +71,17 @@ export class HomePage {
 
     GoogleLogin() {      
         console.log('login-google');
-      
+              
+      if (this.platform.is('android') || this.platform.is('ios')) {
+        // google native login, seems to work only on android and maybe ios, not in browser with cordova
+        if (this.platform.is('ios'))
+          this.googleClientID = '47400303710-nilpm678vsq235dsmd0boaq67vsk21pn.apps.googleusercontent.com';
+    
+        if (this.platform.is('android'))
+          this.googleClientID = '47400303710-k7fq4ppvuj7decrrgvvh3daaieuqkg2g.apps.googleusercontent.com';
         
-      if (this.platform.is('cordova')) {
-        // google native login
         return this.googlePlus.login({
-          'webClientId': '47400303710-nilpm678vsq235dsmd0boaq67vsk21pn.apps.googleusercontent.com',
+          'webClientId': this.googleClientID,
           'offline': true
         })
           .then(res => {
