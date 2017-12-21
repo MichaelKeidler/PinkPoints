@@ -32,6 +32,9 @@ export class HomePage {
     private fb: Facebook, 
     private googlePlus: GooglePlus) {
 
+    //firebase.initializeApp(environment.firebase);   
+      
+    
     fbAuth.authState.subscribe(user => {
       if (!user) {
         this.displayName = null;
@@ -45,14 +48,13 @@ export class HomePage {
         message: 'Hello: ' + user.displayName + '(' + user.providerId + ')', duration: 2000 })
   
       toast.present();
-    });
+    }); 
 
   }
 
     FBLogin(){      
         console.log('login-facebook');        
-               
-
+                
         if (this.platform.is('cordova')) {
           return this.fb.login(['email', 'public_profile']).then(res => {
             const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
@@ -64,12 +66,13 @@ export class HomePage {
             .signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then(res => console.log(res))
             .catch(error => console.log(error));
-        }           
+        }
     }  
 
     GoogleLogin() {      
         console.log('login-google');
-
+      
+        
       if (this.platform.is('cordova')) {
         // google native login
         return this.googlePlus.login({
@@ -93,11 +96,12 @@ export class HomePage {
 
     twitterLogin(){      
         console.log('login-firebase');         
-
+       
+        
         this.fbAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
         .then(res => console.log(res))
         .catch(error => console.log(error)) 
-
+        
     }  
 
     eMailLogin(){

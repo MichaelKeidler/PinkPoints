@@ -15,19 +15,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 
-import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFireModule } from 'angularfire2'
 
-
-// import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyB87MhxOZZ-4lBUzhUmMD-Hb3VFpquwIz0",
-  authDomain: "fir-pinkypoints.firebaseapp.com",
-  databaseURL: "https://fir-pinkypoints.firebaseio.com",
-  projectId: "firebase-pinkypoints",
-  storageBucket: "firebase-pinkypoints.appspot.com",
-  messagingSenderId: "47400303710"
+export const firebaseConfig  = {  
+    apiKey: "AIzaSyB87MhxOZZ-4lBUzhUmMD-Hb3VFpquwIz0",
+    authDomain: "fir-pinkypoints.firebaseapp.com",
+    databaseURL: "https://fir-pinkypoints.firebaseio.com",
+    projectId: "firebase-pinkypoints",
+    storageBucket: "firebase-pinkypoints.appspot.com",
+    messagingSenderId: "47400303710"  
 };
 
 @NgModule({
@@ -41,9 +38,9 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    IonicModule.forRoot(MyApp),    
     // AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
@@ -60,7 +57,7 @@ export const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     Facebook,     
-    GooglePlus
+    GooglePlus,         
   ]
 })
 export class AppModule {}

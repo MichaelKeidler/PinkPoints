@@ -28,6 +28,7 @@ export class LoginPage {
   }
 
   async login(user: User) {
+    /*
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if (result) {
@@ -37,6 +38,7 @@ export class LoginPage {
     catch (e) {
       console.error(e);
     }
+    */
   }
  
   async register(user: User) {
