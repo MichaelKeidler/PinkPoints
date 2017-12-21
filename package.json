@@ -29,7 +29,6 @@
     "@ionic/storage": "2.0.1",
     "angularfire2": "^5.0.0-rc.4",
     "cordova-android": "6.3.0",
-    "cordova-android-support-gradle-release": "^1.1.5",
     "cordova-browser": "5.0.1",
     "cordova-ios": "4.5.2",
     "cordova-plugin-device": "^1.1.7",
@@ -66,9 +65,6 @@
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.47400303710-nilpm678vsq235dsmd0boaq67vsk21pn"
       },
       "cordova-plugin-statusbar": {},
-      "cordova-android-support-gradle-release": {
-        "ANDROID_SUPPORT_VERSION": "26.+"
-      },
       "cordova-plugin-facebook4": {
         "APP_ID": "1490154704373511",
         "APP_NAME": "PinkyPoints"

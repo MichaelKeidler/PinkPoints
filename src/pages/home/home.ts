@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
-import { MyApp } from '../../app/app.component';
 
 import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase from 'firebase/app';
