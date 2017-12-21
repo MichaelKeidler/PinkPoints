@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase from 'firebase/app';
 
 import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { Observable } from 'rxjs/Observable';
 import { LoginPage } from '../login/login';
@@ -28,7 +29,8 @@ export class HomePage {
     public toastCtrl: ToastController,
     public platform: Platform,
     private fbAuth: AngularFireAuth,
-    private fb: Facebook) {
+    private fb: Facebook, 
+    private googlePlus: GooglePlus) {
 
     fbAuth.authState.subscribe(user => {
       if (!user) {
@@ -43,14 +45,14 @@ export class HomePage {
         message: 'Hello: ' + user.displayName + '(' + user.providerId + ')', duration: 2000 })
   
       toast.present();
-
     });
 
   }
 
     FBLogin(){      
-        console.log('login-facebook');
-                
+        console.log('login-facebook');        
+               
+
         if (this.platform.is('cordova')) {
           return this.fb.login(['email', 'public_profile']).then(res => {
             const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
@@ -65,12 +67,27 @@ export class HomePage {
         }           
     }  
 
-    GoogleLogin(): void {      
+    GoogleLogin() {      
         console.log('login-google');
 
-        this.fbAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .then(res => console.log(res))
-        .catch(error => console.log(error))  
+      if (this.platform.is('cordova')) {
+        // google native login
+        return this.googlePlus.login({
+          'webClientId': '47400303710-nilpm678vsq235dsmd0boaq67vsk21pn.apps.googleusercontent.com',
+          'offline': true
+        })
+          .then(res => {
+            const googleCredential = firebase.auth.GoogleAuthProvider.credential(res.authResponse.accessToken);
+            return firebase.auth().signInWithCredential(googleCredential);
+          })
+          .catch(error => console.log(error));
+      }
+      else {
+        return this.fbAuth.auth
+          .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+          .then(res => console.log(res))
+          .catch(error => console.log(error));
+      }  
     }  
 
 
