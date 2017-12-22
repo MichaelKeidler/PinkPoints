@@ -47,9 +47,7 @@ export class HomePage {
         message: 'Hello: ' + user.displayName + '(' + user.providerId + ')', duration: 2000 })
   
       toast.present();
-    }); 
-
-    
+    });     
   }
 
     FBLogin(){      
@@ -72,7 +70,7 @@ export class HomePage {
     GoogleLogin() {      
         console.log('login-google');
               
-      if (this.platform.is('android') || this.platform.is('ios')) {
+    if (this.platform.is('android') || this.platform.is('ios')) {
         // google native login, seems to work only on android and maybe ios, not in browser with cordova
         if (this.platform.is('ios'))
           this.googleClientID = '47400303710-nilpm678vsq235dsmd0boaq67vsk21pn.apps.googleusercontent.com';
@@ -101,12 +99,31 @@ export class HomePage {
 
     twitterLogin(){      
         console.log('login-firebase');         
-       
-        
-        this.fbAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider())
-        .then(res => console.log(res))
-        .catch(error => console.log(error)) 
-        
+        // Note that signInWithPopup is not supported in Cordova
+        var provider = new firebase.auth.TwitterAuthProvider();
+
+        if (this.platform.is('cordova')) {
+          return firebase.auth().signInWithRedirect(provider).then(function() {
+            return firebase.auth().getRedirectResult();
+          }).then(function(result) {
+            // This gives you a Google Access Token.
+            // You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          });
+        }
+        else {
+          return this.fbAuth.auth
+          .signInWithPopup(new firebase.auth.TwitterAuthProvider())
+          .then(res => console.log(res))
+          .catch(error => console.log(error))     
+        }            
     }  
 
     eMailLogin(){
