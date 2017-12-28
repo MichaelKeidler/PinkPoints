@@ -98,7 +98,7 @@ export class HomePage {
 
 
     twitterLogin(){      
-        console.log('login-firebase');         
+        console.log('login-twitter');         
         // Note that signInWithPopup is not supported in Cordova
         var provider = new firebase.auth.TwitterAuthProvider();
 
