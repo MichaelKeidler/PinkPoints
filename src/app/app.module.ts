@@ -55,7 +55,7 @@ export const firebaseConfig  = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     Facebook,     
-    GooglePlus,         
+    GooglePlus,      
   ]
 })
 export class AppModule {}
