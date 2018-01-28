@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { DatabaseComponent } from '../../components/database/database';
 
 @Component({
   selector: 'page-about',
@@ -24,5 +25,12 @@ export class AboutPage {
     this.points--;
 
     console.log('pointsMinus: -' + this.points);
+  }
+
+  RefreshTotal() {
+    console.log('Refresh Total');
+
+    
+
   }
 }

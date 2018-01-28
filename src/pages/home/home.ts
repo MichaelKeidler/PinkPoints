@@ -31,6 +31,8 @@ export class HomePage {
     public platform: Platform,
     private fbAuth: AngularFireAuth,
     private fb: Facebook,     
+
+
     private googlePlus: GooglePlus) {
        
 
@@ -42,9 +44,9 @@ export class HomePage {
       }
       this.displayName = user.displayName;
       this.photoURL = user.photoURL;
-      
+
       let toast = this.toastCtrl.create({
-        message: 'Hello: ' + user.displayName + '(' + user.providerId + ')', duration: 2000 })
+        message: 'Hello: ' + user.displayName + '(' + user.uid + ')' + ' ' + user.providerId, duration: 2000 })
   
       toast.present();
     });     
