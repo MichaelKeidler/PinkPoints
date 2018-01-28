@@ -19,6 +19,6 @@ lane :beta do
 
   # upload to HockeyApp
   hockey(
-    # api_token: "YOUR_API_TOKEN"
+    # api_token: "76570e22dd26493c8a0f01501a57057b"
   )
 end
