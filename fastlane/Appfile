@@ -6,3 +6,9 @@
 
 # app_identifier "com.your.app" # the bundle identifier of your app
 # apple_id "apple@fastlane.tools" # Your Apple ID
+
+app_identifier "com.keidler.pinkypoints" # The bundle identifier of your app
+apple_id "michael.keidler@gmx.de" # Your Apple ID Email address
+
+# team_id "12345678"  # Developer Portal Team ID
+# itc_team_id "12345678" # Your iTunes Connect Team ID
