@@ -9,12 +9,56 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      Kontostand (Mike)
+      Account of Mike
     </ion-card-header>
     <ion-card-content>
       {{points}}
     </ion-card-content>
   </ion-card>
+  
+  <ion-card>
+      <ion-card-header>
+          Book some PinkyPoints
+      </ion-card-header>
+      <ion-card-content>
+          <ion-item>
+              <ion-select [(ngModel)]="newPoints.amount" (ionChange)="onSelectChange($event)" > 
+               <ion-option *ngFor="let fibo of quasiFibonacci" [value]="fibo.value">
+                    {{fibo.label}}
+                  </ion-option>
+           </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-input type="text" [(ngModel)]="newPoints.reason" placeholder="Text Input"></ion-input>
+          </ion-item>
+          <button ion-button full ClickMe (click)='pointsCommit();'>
+                <ion-icon name="git-commit"></ion-icon>
+                commit PinkyPoints
+              </button>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+          for manual Tests:
+        </ion-card-header>
+        <ion-card-content>
+            <button ion-button full ClickMe (click)='pointsMinus();'>
+                <ion-icon name="remove"></ion-icon>
+                minus
+            </button>
+            <button ion-button full ClickMe (click)='pointsPlus();'>
+                <ion-icon name="add"></ion-icon>
+                plus
+            </button>
+            <button ion-button full ClickMe (click)='RefreshTotal();'>
+                <ion-icon name="refresh"></ion-icon>
+                refresh
+            </button>
+        </ion-card-content>
+      </ion-card>
+
+
   <ion-grid>
     <ion-row>
       <ion-col>
