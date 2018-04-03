@@ -9,7 +9,7 @@ import { NavController } from 'ionic-angular';
 export class AboutPage {
 
   private points: number = 0;
-  public newPoints = new Points; 
+  public newPoints = new Points(0,'empty'); 
   public quasiFibonacci = [{value:0, label:'0 PinkyPoints'},
                            {value:0.5, label: '0.5 PinkyPoints'},
                            {value:1, label:'1 PinkyPoints'},
@@ -34,10 +34,21 @@ export class AboutPage {
                            {value:-100, label:'-100 BlackPoints'},
                            {value:-500, label: '-500 BlackPoints'}]
 
+  public bookings = new Set<Booking>();
+  public booking = new Booking(new Points(0,"empty"));
+
   constructor(public navCtrl: NavController) {
 
-    this.points = 44; // get it somewhere from dartabase
+    this.points = 0; // get it somewhere from dartabase
     this.newPoints.amount = 1;
+    this.bookings.add(new Booking(new Points(5,"Blumen")));
+    this.bookings.add(new Booking(new Points(1,"Kuesschen")));
+    this.bookings.add(new Booking(new Points(13,"Muell rausbringen")));
+    this.bookings.add(new Booking(new Points(-20,"Betrunken")));
+
+    this.bookings.forEach(element => {
+      this.points = this.points + element.points.amount;
+    });
   }
 
   pointsPlus() {
@@ -48,10 +59,13 @@ export class AboutPage {
   
   pointsCommit() {
     this.points = this.points + this.newPoints.amount;
+    
+
+    this.bookings.add(new Booking(new Points(this.newPoints.amount,this.newPoints._reason)));
 
     // write to DB here
 
-    console.log('newPoints.amount: +' + this.newPoints.amount);
+    console.log('newPoints.amount: +' + this.newPoints.amount + ' (' + new Date() + ')');
     console.log('pointsCommit: +' + this.points);
   }
 
@@ -65,11 +79,6 @@ export class AboutPage {
     console.log('Refresh Total');
    }
 
-/*   onChange($event){
-    console.log('onChange')
-    console.log($event.target.value);
-   } */
-
   onSelectChange(selectedValue: any) {
     console.log('onSelectChange, Selected value: ', selectedValue);
   }
@@ -78,4 +87,19 @@ export class AboutPage {
 class Points {
   public amount: number;
   public reason: string;
+
+  constructor(public _amount: number, public _reason: string) {
+    this.amount = _amount;
+    this.reason = _reason;
+  }
+}
+
+class Booking {
+  public points: Points;
+  public timeStamp: Date; 
+
+  constructor(public _points: Points) {
+    this.points = _points;
+    this.timeStamp = new Date();
+  }
 }

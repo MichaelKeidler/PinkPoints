@@ -44,12 +44,15 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list>
-            <ion-item>
+              <ion-item *ngFor="let booking of bookings">
+                  {{booking.points.amount}} {{booking.points.reason}} 
+                </ion-item>
+<!--             <ion-item>
               +100 : Blumen (12.03.2018)
             </ion-item>
             <ion-item>
               +1 : Blumen (11.03.2018)
-            </ion-item>
+            </ion-item> -->
           </ion-list>
         </ion-card-content>
     </ion-card>
