@@ -1,0 +1,103 @@
+
+
+App 
+
+ - GIT Repository anlegen
+ - VS Code installieren 
+   PlugIns:
+   - ts lint
+   - 
+ - GIT bash installieren 
+ - node.js / NPM installieren --> Latest Stable! 
+   download from nodejs.org
+   DO NOT Update NPM separatly
+  
+ - add ios platform
+ - add android platform
+   - download android tools and use sdk manager
+      #> sdkmanager --list	  
+	  #> sdkmanager build-tools;26.0.0
+      #> sdkmanager platforms;android-26
+	  #>
+      #> sdkmanager --list
+	  #> sdkmanager --licenses	  
+	  #>
+	  
+   - set ANDROID_HOME to android sdk folder
+   - install Java Development Kit JDK
+   - 
+   
+ 
+  build-tools;23.0.0
+  platforms;android-23
+ 
+ 
+ 
+ - add facebook plugin
+ 
+ - generate keys: (keytool.exe is a java tool in java /bin folder)
+ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+ 
+ 
+ +------------------------------------+
+ |      DEPLOYMENT                    |
+ +------------------------------------+
+
+ - Signing
+   - APK
+     https://stackoverflow.com/questions/10930331/how-to-sign-an-already-compiled-apk
+	 
+   
+   
+ - Deploy 
+ 
+Can you try to kill any Chrome instances, and start it manually with remote debugging enabled? The path should be 
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 
+Once launched, can you then try to visit http://127.0.0.1:9222/json in any browser?
+
+Debug app als browser schwierig, da cordova nicht einfach im browser läuft
+ionic cordova platform add browser
+
+ionic cordova run browser
+
+https://ionicthemes.com/tutorials/about/ionic2-google-login
+google+ login benötigt ein SHA cert um die App(?) zu signieren. 
+https://developers.google.com/mobile/add?platform=android&cntapi=signin
+Hab ich noch nicht. wird später gemacht
+erstmal weiter mit FB
+
+Mock Webservices: 
+https://www.mockable.io/ (ungetestet)
+
+certs:
+
+https://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows
+
+makecert -r -pe -n "CN=keidler" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv keidler-CA.pvk keidler-CA.cer
+b1ll1g
+
+certutil -user -addstore Root keidler-CA.cer
+
+makecert -pe -n "CN=keidler-SPC" -a sha256 -cy end -sky signature -ic keidler-CA.cer -iv keidler-CA.pvk -sv keidler-SPC.pvk keidler-SPC.cer
+
+makecert -pe -n "CN=keidler-SPC" -a sha256 -cy end -sky signature -ic keidler-CA.cer -iv keidler-CA.pvk -sv keidler-SPC2.pvk keidler-SPC2.cer
+
+pvk2pfx -pvk keidler-SPC.pvk -spc keidler-SPC.cer -pfx keidler-SPC.pfx
+
+fingerprint:
+
+b2:9e:ce:cd:76:73:a7:21:72:ef:0f:b2:4d:9e:6c:cc:78:19:e2:5c
+‎E2:13:13:78:47:57:0E:34:06:0F:59:A6:86:EC:6C:9C:1A:52:32:EA
+
+DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09
+DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09
+
+‎67 ae f4 27 67 da 55 a1 47 60 ab d8 a1 c3 df 8b
+
+
+keystore
+https://support.globalsign.com/customer/en/portal/articles/2121490-java-keytool---create-keystore
+
+keytool -genkey -alias mydomain -keyalg RSA -keystore KeyStore.jks -keysize 2048
+
+keytool -importkeystore -srckeystore Keidler.KeyStore.jks -destkeystore Keidler.KeyStore.jks -deststoretype pkcs12
